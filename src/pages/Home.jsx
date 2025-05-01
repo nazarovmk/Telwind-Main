@@ -11,11 +11,18 @@ function Home() {
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowContent(true);
-    }, 1000);
+    const alreadyVisited = sessionStorage.getItem("visited");
 
-    return () => clearTimeout(timer);
+    if (alreadyVisited) {
+      setShowContent(true);
+    } else {
+      const timer = setTimeout(() => {
+        setShowContent(true);
+        sessionStorage.setItem("visited", "true");
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   if (isPending || !showContent) {

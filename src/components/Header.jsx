@@ -22,7 +22,7 @@ function Header() {
       <nav className="navbar main-container">
         <div className="navbar-start">
           <Link className="btn btn-primary hidden md:flex" to="/">
-            <p className="text-xl md:text-2xl"> Uzum market</p>
+            <p className="text-xl md:text-2xl">Market</p>
           </Link>
           <button
             className="btn btn-primary md:hidden flex"

@@ -2,14 +2,11 @@ import { useParams } from "react-router-dom";
 import { UseFetch } from "../hooks/UseFetch";
 import { GlobalProvider } from "../hooks/GlobalProvider";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
 
 function Product() {
   const { id } = useParams();
   const { dispatch, products } = GlobalProvider();
-  const { data, isPending, error } = UseFetch(
-    `https://dummyjson.com/product/${id}`
-  );
+  const { data } = UseFetch(`https://dummyjson.com/product/${id}`);
 
   const addProduct = (product) => {
     const item = products.find((p) => p.id == product.id);
@@ -23,14 +20,6 @@ function Product() {
       payload: { ...product, amount: 1 },
     });
   };
-
-  if (isPending) {
-    return (
-      <section className="main-container">
-        <h2 className="text-4xl font-bold mb-5">Product</h2>
-      </section>
-    );
-  }
 
   return (
     <>
